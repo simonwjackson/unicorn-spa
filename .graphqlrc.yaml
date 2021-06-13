@@ -1,0 +1,2 @@
+schema: ${SCHEMA_FILE:./generated/schema.graphql}
+documents: './src/{pages,hooks,components}/**/*.{tsx,ts}'

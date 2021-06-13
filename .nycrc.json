@@ -1,0 +1,11 @@
+{
+   "extends": "@istanbuljs/nyc-config-typescript",
+   "exclude": ["src/pages/api/__coverage__.js", "**/*.test.js", "**/*.stories.tsx"],
+   "include": ["src/{components,pages,hooks,schema}/**/*.{js,jsx,ts,tsx}"],
+   "all": true,
+   "report-dir": "cypress-coverage",
+   "branches": 0,
+   "lines": 0,
+   "functions": 0,
+   "statements": 0
+}

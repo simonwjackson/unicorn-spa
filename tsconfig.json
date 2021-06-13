@@ -1,0 +1,27 @@
+{
+   "compilerOptions": {
+      "target": "es5",
+      "lib": ["dom", "dom.iterable", "esnext"],
+      "allowJs": true,
+      "skipLibCheck": true,
+      "strict": true,
+      "forceConsistentCasingInFileNames": true,
+      "noEmit": true,
+      "esModuleInterop": true,
+      "module": "esnext",
+      "moduleResolution": "node",
+      "resolveJsonModule": true,
+      "isolatedModules": true,
+      "jsx": "preserve",
+      "types": ["ramda", "react", "jest"],
+      "baseUrl": "src"
+   },
+   "include": [
+      "**/*.tsx",
+      "**/*.ts",
+      "src/pages/api/article.js",
+      "cypress/db/seed.js",
+      "server.js"
+   ],
+   "exclude": ["node_modules", "**/*.test.ts", "**/*.stories.tsx"]
+}

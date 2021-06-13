@@ -1,0 +1,26 @@
+{
+   "no-restricted-tags": [
+      "on",
+      {
+         "tags": [
+            "@only",
+            "@focus"
+         ],
+         "patterns": [
+            "^@todo$"
+         ]
+      }
+   ],
+   "no-dupe-feature-names": "on",
+   "no-duplicate-tags": "on",
+   "no-empty-file": "on",
+   "no-files-without-scenarios": "on",
+   "no-scenario-outlines-without-examples": "on",
+   "no-unnamed-features": "on",
+   "no-unnamed-scenarios": "on",
+   "no-unused-variables": "on",
+   "one-space-between-tags": "on",
+   "keywords-in-logical-order": "on",
+   "use-and": "on",
+   "file-name": "on"
+}

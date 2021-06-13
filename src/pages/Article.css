@@ -1,0 +1,89 @@
+article#main-article {
+   tab-size: 4;
+   -webkit-text-size-adjust: 100%;
+   font-family: inherit;
+   box-sizing: border-box;
+   border-width: 0;
+   border-style: solid;
+   border-color: #e5e7eb;
+   max-width: 65ch;
+   font-size: 1.125rem;
+   line-height: 1.7777778;
+   margin-left: auto;
+   margin-right: auto;
+   margin-top: 1.5rem;
+   color: rgba(107, 114, 128, var(--tw-text-opacity));
+}
+
+article#main-article span.marked {
+   background-color: #ffffc3;
+   color: rgb(99 99 99);
+   padding-top: 0.4ex;
+   padding-bottom: 0.4ex;
+   position: relative;
+}
+
+article#main-article ::-moz-selection {
+   background-color: #ffffc3;
+   color: rgb(99 99 99);
+   padding-top: 0.4ex;
+   padding-bottom: 0.4ex;
+}
+
+article#main-article ::selection {
+   background-color: #ffffc3;
+   color: rgb(99 99 99);
+   padding-top: 0.4ex;
+   padding-bottom: 0.4ex;
+}
+
+article#main-article span.marked::before,
+article#main-article span.marked::after {
+   content: '';
+   background-color: #ffffc3;
+   position: absolute;
+   width: 0.4ex;
+   height: calc(2.5ch);
+   margin-top: 0.15ex;
+   z-index: -1;
+}
+article#main-article span.marked::before {
+   left: -0.4ex;
+}
+
+article#main-article p {
+   tab-size: 4;
+   -webkit-text-size-adjust: 100%;
+   --tw-text-opacity: 1;
+   font-family: inherit;
+   box-sizing: border-box;
+   border-width: 0;
+   border-style: solid;
+   border-color: #e5e7eb;
+   margin: 0;
+   max-width: 65ch;
+   font-size: 1.125rem;
+   line-height: 1.7777778;
+   margin-left: auto;
+   margin-right: auto;
+   margin-top: 1.5rem;
+   color: rgba(107, 114, 128, var(--tw-text-opacity));
+}
+
+article#main-article h2,
+article#main-article h3 {
+   tab-size: 4;
+   -webkit-text-size-adjust: 100%;
+   font-family: inherit;
+   box-sizing: border-box;
+   border-width: 0;
+   border-style: solid;
+   border-color: #e5e7eb;
+   margin: 0;
+   color: #111827;
+   font-weight: 700;
+   font-size: 1.6666667em;
+   margin-top: 1.8666667em;
+   margin-bottom: 1.0666667em;
+   line-height: 1.3333333;
+}

@@ -1,0 +1,16 @@
+{
+   "supportFile": "cypress/support/index.ts",
+   "pluginsFile": "cypress/plugins/index.ts",
+   "testFiles": "**/*.{feature,features,feature.ts,spec.ts}",
+   "chromeWebSecurity": false,
+   "componentFolder": "src/components",
+   "component": {
+      "testFiles": "**/*.{feature,features,spec.ts,spec.tsx}"
+   },
+   "env": {
+      "TAGS": "not @ignore",
+      "codeCoverage": {
+         "url": "/api/__coverage__"
+      }
+   }
+}

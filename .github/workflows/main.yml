@@ -1,0 +1,97 @@
+name: CI/CD
+on: [push]
+env:
+   PORT: 5555
+   HOST: localhost
+   NODE_VER: 14.16
+jobs:
+   cancel-others:
+      name: Cancel other Deployments
+      runs-on: ubuntu-20.04
+      steps:
+         - name: Cancel Previous Runs
+           uses: styfle/cancel-workflow-action@0.4.0
+           with:
+              access_token: ${{ github.token }}
+   todos:
+      name: Convert TODOs to Issues
+      runs-on: ubuntu-20.04
+      steps:
+         - name: 'TODO to Issue'
+           uses: 'alstr/todo-to-issue-action@v4.0-alpha'
+           id: 'todo'
+           with:
+              TOKEN: ${{ secrets.GITHUB_TOKEN }}
+   test:
+      runs-on: ubuntu-20.04
+      name: Unit & E2E Tests
+      steps:
+         - name: Setup Node
+           uses: actions/setup-node@v1
+           with:
+              node-version: ${{ env.NODE_VER }}
+         - run: node -v
+         - name: Checkout 🛎
+           uses: actions/checkout@v2
+           with:
+              fetch-depth: 0
+         - name: Install Modules
+           run: npm ci
+         - name: Test 🧪
+           uses: cypress-io/github-action@v2
+           with:
+              command: npm run-script test
+              tag: node-${{ env.NODE_VER }}
+         - name: Upload coverage reports
+           uses: actions/upload-artifact@v2
+           with:
+              name: coverage
+              path: ${{ github.workspace }}/reports
+   codecov-e2e:
+      name: 'CodeCov: E2E'
+      needs: test
+      runs-on: ubuntu-20.04
+      steps:
+         - name: Download coverage reports
+           uses: actions/download-artifact@v2
+           with:
+              name: coverage
+         - uses: codecov/codecov-action@v1
+           with:
+              token: ${{ secrets.CODECOV_TOKEN }}
+              files: './reports/from-cypress-e2e.json'
+              flags: 'e2e'
+              fail_ci_if_error: false
+              verbose: true
+   codecov-component:
+      name: 'CodeCov: Components'
+      needs: test
+      runs-on: ubuntu-20.04
+      steps:
+         - name: Download coverage reports
+           uses: actions/download-artifact@v2
+           with:
+              name: coverage
+         - uses: codecov/codecov-action@v1
+           with:
+              token: ${{ secrets.CODECOV_TOKEN }}
+              files: './reports/from-cypress-component.json'
+              flags: 'component'
+              fail_ci_if_error: false
+              verbose: true
+   codecov-unit:
+      name: 'CodeCov: Unit'
+      needs: test
+      runs-on: ubuntu-20.04
+      steps:
+         - name: Download coverage reports
+           uses: actions/download-artifact@v2
+           with:
+              name: coverage
+         - uses: codecov/codecov-action@v1
+           with:
+              token: ${{ secrets.CODECOV_TOKEN }}
+              files: './reports/from-jest.json'
+              flags: 'unit'
+              fail_ci_if_error: false
+              verbose: true
